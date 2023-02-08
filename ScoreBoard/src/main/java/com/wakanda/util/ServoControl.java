@@ -19,8 +19,8 @@ public static void main(String[] args) throws Exception{
 	//Set the control frequency of the servo, generally 50hz, a period of 20ms
     BigDecimal frequencyCorrectionFactor = new BigDecimal("1");
 	//Set the correction factor, the actual output frequency of PCA9685 has an error with the set frequency, so it needs to be corrected. If it is necessary to correct, just fill in 1
-   // I2CBus bus = I2CFactory.getInstance(I2CBus.BUS_1);
-    final PCA9685GpioProvider provider = new PCA9685GpioProvider(null, 0x40, frequency, frequencyCorrectionFactor);
+    I2CBus bus = I2CFactory.getInstance(I2CBus.BUS_0);
+    final PCA9685GpioProvider provider = new PCA9685GpioProvider(bus, 0x40, frequency, frequencyCorrectionFactor);
   // GpioPinPwmOutput[] myOutputs = provisionPwmOutputs(provider);
     provider.reset();
     Pin pin_0 = PCA9685Pin.ALL[0];
