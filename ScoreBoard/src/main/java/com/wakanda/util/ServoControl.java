@@ -4,10 +4,11 @@ import java.io.IOException;
 
 public class ServoControl {
 public static void main(String[] args) throws IOException {
+	
 	String[] cmd = {
 		      "python",
 		      "/home/pi/addr_40.py",
-		      	"0","0"
+		      	args[0],args[1]
 		    };
 		    Runtime.getRuntime().exec(cmd);
 }
