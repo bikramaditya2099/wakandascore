@@ -9,6 +9,7 @@ import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinPwmOutput;
 import com.pi4j.io.gpio.Pin;
 import com.pi4j.io.i2c.I2CBus;
+import com.pi4j.io.i2c.I2CDevice;
 import com.pi4j.io.i2c.I2CFactory;
 
 public class ServoControl {
@@ -19,7 +20,8 @@ public static void main(String[] args) throws Exception{
 	//Set the control frequency of the servo, generally 50hz, a period of 20ms
     BigDecimal frequencyCorrectionFactor = new BigDecimal("1");
 	//Set the correction factor, the actual output frequency of PCA9685 has an error with the set frequency, so it needs to be corrected. If it is necessary to correct, just fill in 1
-    I2CBus bus = I2CFactory.getInstance(I2CBus.BUS_0);
+    I2CBus bus = I2CFactory.getInstance(I2CBus.BUS_1);
+    
     final PCA9685GpioProvider provider = new PCA9685GpioProvider(bus, 0x40, frequency, frequencyCorrectionFactor);
   // GpioPinPwmOutput[] myOutputs = provisionPwmOutputs(provider);
     provider.reset();
