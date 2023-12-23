@@ -54,7 +54,7 @@
 <script>
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope,$http) {
-   var host=location.hostname;
+   var host=location.hostname+":8080";
    $scope.health=false;
      $http.get("http://"+host+"/healthCheck")
   .then(function(response) {
